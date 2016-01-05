@@ -89,12 +89,7 @@ void alac_allocate_buffers(alac_file *alac)
 void alac_set_info(alac_file *alac, char *inputbuffer)
 {
   char *ptr = inputbuffer;
-  ptr += 4; /* size */
-  ptr += 4; /* frma */
   ptr += 4; /* alac */
-  ptr += 4; /* size */
-  ptr += 4; /* alac */
-
   ptr += 4; /* 0 ? */
 
   alac->setinfo_max_samples_per_frame = *(uint32_t*)ptr; /* buffer size / 2 ? */
