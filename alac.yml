@@ -15,7 +15,7 @@ TRANSLATOR:
     enum: evalFull
   PtrTips:
     function:
-      - {target: ^alac_decode_frame, tips: [ref,no,no,ref]}
+      - {target: ^alac_decode_frame, tips: [ref,0,0,ref]}
       - {target: ^alac_, tips: [ref]}
   Rules: 
     global: 
