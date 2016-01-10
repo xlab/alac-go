@@ -27,11 +27,11 @@ type AlacReader struct {
 	frameN uint32
 	chunkN uint32
 
-	bytesPerSample    uint
+	bytesPerSample    uint32
 	sampleRate        uint32
 	framesTotal       uint32
 	unitsTotal        uint32
-	maxSamplesInFrame uint
+	maxSamplesInFrame uint32
 	frameDurations    uint32Rows
 	packetsPerChunk   uint32Rows
 	chunkOffsets      []uint32
@@ -100,9 +100,9 @@ func (a *AlacReader) chunkOf(n uint32) (chunk uint32, packets uint32) {
 func NewAlacReader(in io.ReadSeeker, bitDepth int, channels int) *AlacReader {
 	return &AlacReader{
 		in: in,
-		a:  alac.Create(bitDepth, channels),
+		a:  alac.Create(int32(bitDepth), int32(channels)),
 		//
-		bytesPerSample: uint(bitDepth / 8),
+		bytesPerSample: uint32(bitDepth / 8),
 	}
 }
 
@@ -218,7 +218,7 @@ func (a *AlacReader) StreamCallback(_ unsafe.Pointer, output unsafe.Pointer, sam
 		return statusAbort
 	}
 
-	var size int
+	var size int32
 	alac.DecodeFrame(a.a, a.buf[:packetSize], unsafe.Pointer(&a.debuf[0]), &size)
 	a.debuf = a.debuf[:size]
 	// sampleCount a.k.a samples in the frame, a frame usually has
