@@ -198,12 +198,12 @@ func (a *AlacReader) Close() {
 // func (a *AlacReader) advanceChunk()
 
 func (a *AlacReader) StreamCallback(_ unsafe.Pointer, output unsafe.Pointer, sampleCount uint,
-	_ *portaudio.StreamCallbackTimeInfo, _ portaudio.StreamCallbackFlags, _ unsafe.Pointer) int {
+	_ *portaudio.StreamCallbackTimeInfo, _ portaudio.StreamCallbackFlags, _ unsafe.Pointer) int32 {
 
 	const (
-		statusContinue = int(portaudio.PaContinue)
-		statusComplete = int(portaudio.PaComplete)
-		statusAbort    = int(portaudio.PaAbort)
+		statusContinue = int32(portaudio.PaContinue)
+		statusComplete = int32(portaudio.PaComplete)
+		statusAbort    = int32(portaudio.PaAbort)
 	)
 
 	if a.frameN >= a.framesTotal {
