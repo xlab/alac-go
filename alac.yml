@@ -10,9 +10,6 @@ PARSER:
   SourcesPaths: [alac/alac.h]
 
 TRANSLATOR: 
-  ConstRules: 
-    decl: expand
-    enum: evalFull
   PtrTips:
     function:
       - {target: ^alac_decode_frame, tips: [ref,0,0,ref]}
