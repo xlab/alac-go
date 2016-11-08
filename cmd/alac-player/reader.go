@@ -223,7 +223,7 @@ func (a *AlacReader) StreamCallback(_ unsafe.Pointer, output unsafe.Pointer, sam
 	a.debuf = a.debuf[:size]
 	// sampleCount a.k.a samples in the frame, a frame usually has
 	// 4096 samples per channel, so we process (int16|int16) at a time for L|R.
-	out := (*(*[1 << 32]int16)(output))[:sampleCount*audioChannels]
+	out := (*(*[1 << 24]int16)(output))[:sampleCount*audioChannels]
 	for i := 0; i < len(out); i++ {
 		// 2 channel 16-bit stereo
 		out[i] = int16(a.debuf[2*i]) | int16(a.debuf[2*i+1])<<8
