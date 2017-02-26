@@ -1,5 +1,5 @@
 all:
-	cgogen alac.yml
+	c-for-go alac.yml
 
 clean:
 	rm -f alac/cgo_helpers.go alac/cgo_helpers.h alac/doc.go alac/types.go

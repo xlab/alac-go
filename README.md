@@ -26,7 +26,7 @@ Audio duration: 224.026s
 
 ### Rebuilding the package
 
-You will need to get the [cgogen](https://git.io/cgogen) tool installed first.
+You will need to get the [c-for-go](https://git.io/c-for-go) tool installed first.
 
 ```
 $ git clone https://github.com/xlab/alac-go && cd alac-go
